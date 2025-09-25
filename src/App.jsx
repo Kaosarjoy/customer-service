@@ -1,6 +1,7 @@
 
 import './App.css'
 import Banner from './component/Banner/Banner'
+import Footer from './component/Footer/Footer'
 import Navbar from './component/Navbar/Navbar'
 import Section from './component/Section/Section'
 
@@ -12,6 +13,7 @@ function App() {
      <Navbar></Navbar>
      <Banner></Banner>
      <Section ></Section>
+     <Footer></Footer>
     </>
   )
 }
