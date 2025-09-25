@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "title": "Login issue",
+    "description": "Cannot login to account",
+    "customer": "Alice",
+    "priority": "High",
+    "status": "Resolved",
+    "createdAt": "2025-09-20"
+  },
+  {
+    "id": 2,
+    "title": "Page not loading",
+    "description": "Dashboard page keeps loading",
+    "customer": "Bob",
+    "priority": "Medium",
+    "status": "In-Progress",
+    "createdAt": "2025-09-21"
+  },
+  {
+    "id": 3,
+    "title": "Error 500",
+    "description": "Server error on submitting form",
+    "customer": "Charlie",
+    "priority": "High",
+    "status": "Open",
+    "createdAt": "2025-09-22"
+  },
+  {
+    "id": 4,
+    "title": "Feature request",
+    "description": "Add dark mode",
+    "customer": "David",
+    "priority": "Low",
+    "status": "Open",
+    "createdAt": "2025-09-22"
+  },
+  {
+    "id": 5,
+    "title": "Password reset",
+    "description": "Forgot password not working",
+    "customer": "Eve",
+    "priority": "High",
+    "status": "Resolved",
+    "createdAt": "2025-09-23"
+  },
+  {
+    "id": 6,
+    "title": "UI glitch",
+    "description": "Button overlaps text",
+    "customer": "Frank",
+    "priority": "Medium",
+    "status": "In-Progress",
+    "createdAt": "2025-09-23"
+  },
+  {
+    "id": 7,
+    "title": "Notification issue",
+    "description": "Email notifications not received",
+    "customer": "Grace",
+    "priority": "Low",
+    "status": "Open",
+    "createdAt": "2025-09-24"
+  },
+  {
+    "id": 8,
+    "title": "Data export failed",
+    "description": "CSV export not working",
+    "customer": "Hannah",
+    "priority": "High",
+    "status": "Resolved",
+    "createdAt": "2025-09-24"
+  },
+  {
+    "id": 9,
+    "title": "Slow performance",
+    "description": "App lags on dashboard",
+    "customer": "Ian",
+    "priority": "Medium",
+    "status": "In-Progress",
+    "createdAt": "2025-09-24"
+  },
+  {
+    "id": 10,
+    "title": "Incorrect total",
+    "description": "Invoice total is wrong",
+    "customer": "Jane",
+    "priority": "High",
+    "status": "Open",
+    "createdAt": "2025-09-25"
+  },
+  {
+    "id": 11,
+    "title": "Mobile layout bug",
+    "description": "Layout breaks on small screens",
+    "customer": "Kyle",
+    "priority": "Medium",
+    "status": "In-Progress",
+    "createdAt": "2025-09-25"
+  },
+  {
+    "id": 12,
+    "title": "Profile picture upload fails",
+    "description": "Cannot upload profile pic",
+    "customer": "Lily",
+    "priority": "Low",
+    "status": "Resolved",
+    "createdAt": "2025-09-25"
+  },
+  {
+    "id": 13,
+    "title": "Search not working",
+    "description": "Search results empty",
+    "customer": "Mike",
+    "priority": "High",
+    "status": "Open",
+    "createdAt": "2025-09-26"
+  },
+  {
+    "id": 14,
+    "title": "Notification delay",
+    "description": "App notifications delayed",
+    "customer": "Nina",
+    "priority": "Medium",
+    "status": "In-Progress",
+    "createdAt": "2025-09-26"
+  },
+  {
+    "id": 15,
+    "title": "Export PDF broken",
+    "description": "PDF export fails on large data",
+    "customer": "Oscar",
+    "priority": "High",
+    "status": "Resolved",
+    "createdAt": "2025-09-26"
+  }
+]
