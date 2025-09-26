@@ -5,7 +5,7 @@ import CustomerTickets from './component/CustomerTickets/CustomerTickets'
 import Footer from './component/Footer/Footer'
 import Navbar from './component/Navbar/Navbar'
 
-
+ import { ToastContainer,  } from 'react-toastify';
 
 function App() {
     
@@ -16,6 +16,7 @@ function App() {
      <CustomerTickets></CustomerTickets>
      
      <Footer></Footer>
+     <ToastContainer />
     </>
   )
 }

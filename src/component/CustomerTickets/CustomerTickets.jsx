@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Section from "../Section/Section";
 import DotImg from "../../assets/record-button.png";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CustomerTickets = () => {
   const [tickets, setTickets] = useState([]);
@@ -23,25 +25,36 @@ const CustomerTickets = () => {
   };
 
   // Complete selected tasks
- const handleComplete = (task) => {
-  setResolvedTasks([...resolvedTasks, task]);
-  setTickets(
-    tickets.map((t) =>
-      t.id === task.id ? { ...t, status: "Resolved" } : t
-    )
-  );
-  setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
-};
+  const handleComplete = (task) => {
+    setResolvedTasks([...resolvedTasks, task]);
+    setTickets(
+      tickets.map((t) =>
+        t.id === task.id ? { ...t, status: "Resolved" } : t
+      )
+    );
+    setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
+
+    // Toast show
+    toast.success(` Task Has Solved`);
+  };
+
+  // Resolve Delete Button
+  const handleDeleteResolved = (taskId) => {
+    setResolvedTasks(resolvedTasks.filter((t) => t.id !== taskId));
+    toast.info("Task deleted ");
+  };
 
   // Button color by priority
   const getButtonColor = (priority) => {
-    if (priority === "High") return "bg-green-100 text-green-700 hover:bg-green-200";
-    if (priority === "Medium") return "bg-yellow-100 text-yellow-700 hover:bg-yellow-200";
+    if (priority === "High")
+      return "bg-green-100 text-green-700 hover:bg-green-200";
+    if (priority === "Medium")
+      return "bg-yellow-100 text-yellow-700 hover:bg-yellow-200";
     return "bg-gray-100 text-gray-700 hover:bg-gray-200";
   };
 
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 mt-6 mx-auto">
       {/* Customer Tickets */}
       <div className="w-2/3">
         <h2 className="text-xl font-bold mb-4">Customer Tickets</h2>
@@ -55,9 +68,13 @@ const CustomerTickets = () => {
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-gray-800">{ticket.title}</h2>
+                <h2 className="text-lg font-semibold text-gray-800">
+                  {ticket.title}
+                </h2>
                 <button
-                  className={`flex items-center gap-2 px-3 py-1 rounded-lg transition ${getButtonColor(ticket.priority)}`}
+                  className={`flex items-center gap-2 px-3 py-1 rounded-lg transition ${getButtonColor(
+                    ticket.priority
+                  )}`}
                 >
                   <img src={DotImg} alt="dot" className="w-3 h-3" />
                   <span className="font-medium">{ticket.status}</span>
@@ -73,13 +90,16 @@ const CustomerTickets = () => {
                   <span className="font-semibold">Id:</span> {ticket.id}
                 </p>
                 <p>
-                  <span className="font-semibold">Priority:</span> {ticket.priority}
+                  <span className="font-semibold">Priority:</span>{" "}
+                  {ticket.priority}
                 </p>
                 <p>
-                  <span className="font-semibold">Name:</span> {ticket.customer}
+                  <span className="font-semibold">Name:</span>{" "}
+                  {ticket.customer}
                 </p>
                 <p>
-                  <span className="font-semibold">Date:</span> {ticket.createdAt}
+                  <span className="font-semibold">Date:</span>{" "}
+                  {ticket.createdAt}
                 </p>
               </div>
             </div>
@@ -92,41 +112,57 @@ const CustomerTickets = () => {
         <h2 className="text-xl font-bold mb-4">Task Status</h2>
 
         {/* Selected Tasks panel */}
-{selectedTasks.length > 0 && (
-  <div className="mb-4">
-    {selectedTasks.map((task) => (
-      <div
-        key={task.id}
-        className="bg-white rounded-xl shadow-md p-4 mb-3 border"
-      >
-        <h3 className="text-lg font-semibold text-black">{task.title}</h3>
-        <p className="text-gray-600">{task.description}</p>
-        {/* Complete button for just this task */}
-        <button
-          onClick={() => handleComplete(task)}
-          className="px-4 py-2 bg-green-600 text-white rounded-[10px] w-full"
-        >
-          Complete
-        </button>
-      </div>
-    ))}
-  </div>
-)}
+        {selectedTasks.length > 0 && (
+          <div className="mb-4">
+            {selectedTasks.map((task) => (
+              <div
+                key={task.id}
+                className="bg-white rounded-xl shadow-md p-4 mb-3 border"
+              >
+                <h3 className="text-lg font-semibold text-black">
+                  {task.title}
+                </h3>
+                <p className="text-gray-600">{task.description}</p>
+                {/* Complete button for just this task */}
+                <button
+                  onClick={() => handleComplete(task)}
+                  className="px-4 py-2 bg-green-600 text-white rounded-[10px] w-full"
+                >
+                  Complete
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
 
-        {/* Resolved Tasks panel */}
+        {/* Resolved Tasks */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Resolved Tasks</h3>
           {resolvedTasks.length === 0 ? (
             <p className="text-sm text-gray-500">No resolved tasks yet</p>
           ) : (
             resolvedTasks.map((task) => (
-              <div key={task.id} className="bg-blue-200 p-2 mb-2 rounded">
-                <p className="text-md font-semibold text-gray-600">{task.description}</p>
+              <div
+                key={task.id}
+                className="bg-blue-200 p-2 mb-2 rounded flex justify-between items-center"
+              >
+                <p className="text-md font-semibold text-gray-600">
+                  {task.description}
+                </p>
+                <button
+                  onClick={() => handleDeleteResolved(task.id)}
+                  className="bg-red-500 text-white px-3 py-1 rounded"
+                >
+                  Delete
+                </button>
               </div>
             ))
           )}
         </div>
       </div>
+
+      {/* Toast container */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

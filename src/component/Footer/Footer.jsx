@@ -1,11 +1,11 @@
 import React from 'react';
-import FacebookImg from '../../assets/facebook-app-symbol.png'
-import LinkedImg from '../../assets/linked-big-square-logo.png'
-import TwitterImg from '../../assets/twitter-black-shape.png'
+import FacebookImg from '../../assets/facebook.png'
+import LinkedImg from '../../assets/linkedin.png'
+import TwitterImg from '../../assets/twitter.png'
 
 const Footer = () => {
     return (
-        <footer className= "bg-blue-200 text-black py-10 mt-10 ">
+        <footer className= "bg-black text-white py-10 mt-10 ">
   <div className="   grid grid-cols-1 md:grid-cols-5 gap-8 px-4">
     
     {/* About Section */}
