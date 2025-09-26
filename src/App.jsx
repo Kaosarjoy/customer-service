@@ -1,9 +1,10 @@
 
 import './App.css'
 import Banner from './component/Banner/Banner'
+import CustomerTickets from './component/CustomerTickets/CustomerTickets'
 import Footer from './component/Footer/Footer'
 import Navbar from './component/Navbar/Navbar'
-import Section from './component/Section/Section'
+
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <>
      <Navbar></Navbar>
      <Banner></Banner>
-     <Section ></Section>
+     <CustomerTickets></CustomerTickets>
+     
      <Footer></Footer>
     </>
   )
