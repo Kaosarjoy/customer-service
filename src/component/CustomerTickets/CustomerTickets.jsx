@@ -23,17 +23,15 @@ const CustomerTickets = () => {
   };
 
   // Complete selected tasks
-  const handleComplete = () => {
-    setResolvedTasks([...resolvedTasks, ...selectedTasks]);
-    setTickets(
-      tickets.map((ticket) =>
-        selectedTasks.some((t) => t.id === ticket.id)
-          ? { ...ticket, status: "Resolved" }
-          : ticket
-      )
-    );
-    setSelectedTasks([]);
-  };
+ const handleComplete = (task) => {
+  setResolvedTasks([...resolvedTasks, task]);
+  setTickets(
+    tickets.map((t) =>
+      t.id === task.id ? { ...t, status: "Resolved" } : t
+    )
+  );
+  setSelectedTasks(selectedTasks.filter((t) => t.id !== task.id));
+};
 
   // Button color by priority
   const getButtonColor = (priority) => {
@@ -94,27 +92,26 @@ const CustomerTickets = () => {
         <h2 className="text-xl font-bold mb-4">Task Status</h2>
 
         {/* Selected Tasks panel */}
-
-        {selectedTasks.length > 0 && (
-          <div className="mb-4">
-            {selectedTasks.map((task) => (
-              <div
-                key={task.id}
-                className="bg-white rounded-xl shadow-md p-4 mb-3 border"
-              >
-                <h3 className="text-lg font-semibold text-black">{task.title}</h3>
-                <p className="text-gray-600">{task.description}</p>
-                  <button
-              onClick={handleComplete}
-              className="px-4 py-2 bg-green-600 text-white rounded-[10px] w-full"
-            >
-              Complete
-            </button>
-              </div>
-            ))}
-          
-          </div>
-        )}
+{selectedTasks.length > 0 && (
+  <div className="mb-4">
+    {selectedTasks.map((task) => (
+      <div
+        key={task.id}
+        className="bg-white rounded-xl shadow-md p-4 mb-3 border"
+      >
+        <h3 className="text-lg font-semibold text-black">{task.title}</h3>
+        <p className="text-gray-600">{task.description}</p>
+        {/* Complete button for just this task */}
+        <button
+          onClick={() => handleComplete(task)}
+          className="px-4 py-2 bg-green-600 text-white rounded-[10px] w-full"
+        >
+          Complete
+        </button>
+      </div>
+    ))}
+  </div>
+)}
 
         {/* Resolved Tasks panel */}
         <div>
